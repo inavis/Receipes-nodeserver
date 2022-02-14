@@ -21,7 +21,7 @@ async function createConnection(){
 export const client = await createConnection();
 
 //middleware
-app.use(function(req, res, next) {
+app.use(function(request, response, next) {
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Credentials", "false");
     response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
