@@ -27,7 +27,7 @@ router.delete("/:id",async(request,response)=>{
     response.send(result);
 })
 
-router.patch("/:id",async(request,response)=>{
+router.put("/:id",async(request,response)=>{
     let {id} = request.params;
     const updatedreceipe = request.body;
     let result = await updateReceipeById(id,updatedreceipe);
