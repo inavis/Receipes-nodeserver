@@ -27,7 +27,9 @@ export const client = await createConnection();
 //         methods:["PUT"]
 //     }
 // ))
-app.use(cors())
+// app.use(cors())
+
+app.options('*', cors());
 app.use(express.json())
 
 
