@@ -28,7 +28,7 @@ router.delete("/:id",async(request,response)=>{
 })
 
 router.put("/:id",async(request,response)=>{
-        response.header('Access-Control-Allow-Origin', '*');
+    response.header('Access-Control-Allow-Origin', '*');
     response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     response.header('Access-Control-Allow-Headers', 'Content-Type');
     let {id} = request.params;
