@@ -31,7 +31,7 @@ export const client = await createConnection();
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "*");
   next();
 });
 
