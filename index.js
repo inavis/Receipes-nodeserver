@@ -21,12 +21,12 @@ async function createConnection(){
 export const client = await createConnection();
 
 //middleware
-app.use(cors(
-    {
-        origin:"http://localhost:3000",
-        methods:["PUT"]
-    }
-))
+// app.use(cors(
+//     {
+//         origin:"http://localhost:3000",
+//         methods:["PUT"]
+//     }
+// ))
 // app.use(cors())
 app.use(express.json())
 
