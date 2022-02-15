@@ -20,26 +20,12 @@ async function createConnection(){
 }
 export const client = await createConnection();
 
-//middleware
-// app.use(cors(
-//     {
-//         origin:"http://localhost:3000",
-//         methods:["PUT"]
-//     }
-// ))
-// app.use(cors())
 
-// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 
-app.options('*', cors());
+app.use(cors())
 
-// app.all('*', (req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", ["Content-Type", "Authorization", "Content-Length", "X-Requested-With","Accept","Origin"]);
-//   res.header("Access-Control-Allow-Methods", ["GET","PUT","POST","DELETE","OPTIONS"]);
-//   next();
-// });
 
+// app.options('*', cors());
 
 app.use(express.json())
 
@@ -47,16 +33,6 @@ app.use(express.json())
 //routes
 app.use("/receipe",receipeRouter);
 
-// app.all('*', function(req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     if ('OPTIONS' == req.method) {
-//     res.sendStatus(200);
-//     } else {
-//       next();
-//     }
-//   });
 
 app.get("/",(request,response)=>{
     response.send("receipes API");
