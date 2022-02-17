@@ -2,6 +2,7 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import { receipeRouter } from "./routes/receipe.js";
+import { userRouter } from "./routes/user.js";
 
 //to get data from .env file
 import dotenv from "dotenv";
@@ -32,6 +33,7 @@ app.use(express.json())
 
 //routes
 app.use("/receipe",receipeRouter);
+app.use("/user",userRouter);
 
 
 app.get("/",(request,response)=>{
