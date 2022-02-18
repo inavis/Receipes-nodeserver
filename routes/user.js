@@ -88,5 +88,38 @@ router.post("/signup",async(request,response)=>{
 })
 
 
+//confirmuser
+router.post("/confirmuser/:number",async(request,response)=>{
+    //get number and otp
+    const {number} = request.params
+    const otp = request.body.OTP;
+
+    const user  = await getuser(number);
+
+    //check if user has requested otp
+    if(user){
+        const tempuser = await gettempuser(number);
+
+        //check if otps match
+        const isPasswordmatch = await bcrypt.compare(otp,user.otp);
+        //if matched then create and send token to user
+        if(isPasswordmatch){
+            //delete otp request
+            await deleteotp(number);
+            //remove user from temp and add to main db
+            await adduser(tempuser);
+            await deletetempuser(number)
+            response.send({message:"Success"})
+        }else{
+            response.status('401').send({message:"Invalid OTP. Please check and try again."})
+        }
+    }else{
+        response.status('400').send({message:"Some Error Occured. Please try again."})
+    }
+
+})
+
+
+
 
 export const userRouter = router;
