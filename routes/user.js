@@ -32,6 +32,7 @@ router.post("/sendotp/:number",async(request,response)=>{
     .then((data)=>data.json())
     .then((result)=>{
             result.user=number;
+            result.message="Success"
             response.send(result)
     })
 })
@@ -81,6 +82,7 @@ router.post("/signup",async(request,response)=>{
         }
      const result = await addtempuser(user);
     result.number=user.number;
+    result.message="Success"
     response.send(result)
         
 
