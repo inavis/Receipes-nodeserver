@@ -40,7 +40,7 @@ router.post("/sendotp/:number",async(request,response)=>{
 router.post("/checkotp/:number",async(request,response)=>{
     //get number and otp
     const {number} = request.params
-    const otp = request.body.otp;
+    const otp = request.body.OTP;
 
     const user  = await getuser(number);
 
