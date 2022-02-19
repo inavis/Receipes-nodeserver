@@ -54,7 +54,7 @@ router.post("/checkotp/:number",async(request,response)=>{
         if(isPasswordmatch){
             const token = jwt.sign({id:user._id},process.env.SECRET_KEY);
             await deleteotp(number)
-            response.send({message:"Success",token:token,name:`${userfromdb.firstname} ${userfromdb.lastname}`})
+            response.send({message:"Success",token:token,name:userfromdb.firstname})
         }else{
             response.status('401').send({message:"Invalid OTP. Please check and try again."})
         }
